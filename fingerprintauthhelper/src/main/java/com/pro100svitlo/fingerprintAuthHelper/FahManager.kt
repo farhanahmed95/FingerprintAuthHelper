@@ -168,13 +168,16 @@ internal class FahManager() : FingerprintManager.AuthenticationCallback() {
     }
 
     override fun onAuthenticationFailed() {
-        logThis("AUTH_NOT_RECOGNIZED")
-        mTriesCountLeft--
-        if (mListener != null) {
-            mListener?.get()?.onFingerprintStatus(
-                    false,
-                    FahErrorType.Auth.AUTH_NOT_RECOGNIZED,
-                    mContext?.get()?.getString(R.string.FINGERPRINT_NOT_RECOGNIZED)!!)
+        try{
+            logThis("AUTH_NOT_RECOGNIZED")
+                    mTriesCountLeft--
+                    if (mListener != null) {
+                        mListener?.get()?.onFingerprintStatus(
+                                false,
+                                FahErrorType.Auth.AUTH_NOT_RECOGNIZED,
+                                mContext?.get()?.getString(R.string.FINGERPRINT_NOT_RECOGNIZED)!!)
+                    }
+        }catch(e: Exception){
         }
     }
 

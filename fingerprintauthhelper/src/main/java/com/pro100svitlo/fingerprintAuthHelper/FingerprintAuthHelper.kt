@@ -70,7 +70,7 @@ class FingerprintAuthHelper private constructor(b: Builder) {
         return mIsListening
     }
 
-    fun onSaveInstanceState(outState: Bundle): Boolean {
+    fun onSaveInstanceState(outState: Bundle):Boolean {
         logThis("onSaveInstanceState called")
         if (mFahManager == null) {
             serviceNotEnable("onSaveInstanceState")
